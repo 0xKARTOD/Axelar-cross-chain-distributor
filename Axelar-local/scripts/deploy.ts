@@ -2,6 +2,7 @@
 import { getDefaultProvider } from "ethers";
 import { wallet } from "../config/constants";
 
+
 const {
   utils: { deployContract },
 } = require("@axelar-network/axelar-local-dev");
@@ -18,16 +19,19 @@ async function deploy() {
     /*
         DEPLOY ON CHAINS LIST
     */
-    for (let i = 0; i < chains.length; i++) {
-        const Chain = chains.find((chain: any) => chain.name === chains[i].name)
+    
+    for (const Chain of chains) {
+        //const Chain = chains.find((chain: any) => chain.name === chains[i].name)
         
         const Provider = getDefaultProvider(Chain.rpc)
         const ConnectedWallet = wallet.connect(Provider)
 
+        console.log(Provider)
+        /*
         const Sender = await deployContract(
             ConnectedWallet,
             MessageSenderContract,
-            [Chain.gateway, Chain.gasReceiver],
+            [Chain.gateway, Chain.gasReceiver]
         )
         console.log("MessageSender deployed on ", Chain.name, ":", Sender.address)
 
@@ -36,7 +40,7 @@ async function deploy() {
         const Receiver = await deployContract(
             ConnectedWallet,
             MessageReceiverContract,
-            [Chain.gateway, Chain.gasReceiver],
+            [Chain.gateway, Chain.gasReceiver]
         )
         
         console.log(
@@ -44,6 +48,7 @@ async function deploy() {
             Receiver.address,
         )
         Chain.messageReceiver = Receiver.address
+        */
     }
 }
 

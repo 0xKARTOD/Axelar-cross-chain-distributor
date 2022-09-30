@@ -5,6 +5,7 @@
     "main": "index.js",
 
     "scripts": {
+        "dev": "next dev",
         "start:dev": "ts-node scripts/start-local-dev.ts",
         "test": "echo \"Error: no test specified\" && exit 1",
         "contracts:build": "hardhat compile",
@@ -20,7 +21,8 @@
         "ethers":"^5.7.1",
         "dotenv":"^16.0.2",
         "react":"^18.2.0",
-        "react-dom":"^18.2.0"
+        "react-dom":"^18.2.0",
+        "daisyui":"^2.31.0"
     },
     "devDependencies": {
         "hardhat":"^2.11.2",
@@ -35,6 +37,8 @@
         "solhint":"^3.3.7",
         "@types/react":"^18.0.21",
         "@types/react-dom":"^18.0.6",
-        "@types/node":"^18.7.23"
+        "@types/node":"^18.7.23",
+        "tailwindcss":"^3.1.8",
+        "autoprefixer":"^10.4.12"
     }
 }
