@@ -3,3 +3,4 @@ out/
 .yarn
 
 node_modules
+artifacts
