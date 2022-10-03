@@ -51,12 +51,10 @@ module.exports = {
       },
     },
     bsc_test: {
-      url: 'https://data-seed-prebsc-1-s3.binance.org:8545',
+      url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
       chainId: 97,
       gasPrice: 11000000000,
-      accounts: {
-        mnemonic: process.env.MAINNET_MNEMONIC || '',
-      },
+      accounts: [process.env.MAINNET_MNEMONIC]
     },
     bsc_main: {
       url: 'https://bsc-dataseed.binance.org/',

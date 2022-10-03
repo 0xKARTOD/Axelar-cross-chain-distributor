@@ -24,7 +24,7 @@ async function deploy() {
 
     const MessageReceiverFactory = await hre.ethers.getContractFactory("MessageReceiver")
     const messageReceiver = await MessageReceiverFactory.deploy(chainInfo.gateway, chainInfo.gasReceiver)
-    console.log("Deployed contract to:", messageSender.address)
+    console.log("Deployed contract to:", messageReceiver.address)
     console.log("Gateway:", chainInfo.gateway)
     console.log("Gas Receiver:", chainInfo.gasReceiver)
     console.log("Signed by:", signer.address)
