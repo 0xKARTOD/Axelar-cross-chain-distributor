@@ -1,7 +1,7 @@
 import {
-    createAndExport
+    createAndExport,
+    networks
 } from '@axelar-network/axelar-local-dev';
-
 
 async function main() {
     await createAndExport(
@@ -22,19 +22,6 @@ async function main() {
                     'USDC \n'
                 )
 
-                /*for (let i = 0; i < 4; i++) {
-                    let r = String((Math.random() + 1).toString(36).substring(7))
-                    await network.deployToken(r, r, 6, BigInt(100_000_000e6))
-                    await network.giveToken(userWallet.address, r, BigInt(100e6))
-
-                    const TokenAddress = await network.getTokenContract(r)
-
-                    console.log(
-                        'Balance:',
-                        (await TokenAddress.balanceOf(userWallet.address)) / 1e6,
-                        r, ' \n'
-                    )
-                }*/
             },
         }
     );

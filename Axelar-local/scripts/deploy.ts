@@ -1,4 +1,3 @@
-
 import { getDefaultProvider } from "ethers";
 import { wallet } from "../config/constants";
 
@@ -8,8 +7,7 @@ const {
 } = require("@axelar-network/axelar-local-dev");
 
 // load contracts
-const MessageSenderContract = require("../artifacts/contracts/MessageSender.sol/MessageSender.json");
-const MessageReceiverContract = require("../artifacts/contracts/MessageReceiver.sol/MessageReceiver.json");
+const MegaDisperse = require("../artifacts/contracts/MegaDisperse.sol/MegaDisperse.json");
 
 let chains = require("../local.json");
 
@@ -25,31 +23,18 @@ async function deploy() {
         
         const Provider = getDefaultProvider(Chain.rpc)
         const ConnectedWallet = wallet.connect(Provider)
-
-        console.log(Provider)
-        /*
-        const Sender = await deployContract(
+        
+        const Disperse = await deployContract(
             ConnectedWallet,
-            MessageSenderContract,
-            [Chain.gateway, Chain.gasReceiver]
-        )
-        console.log("MessageSender deployed on ", Chain.name, ":", Sender.address)
-
-        Chain.messageSender = Sender.address
-
-        const Receiver = await deployContract(
-            ConnectedWallet,
-            MessageReceiverContract,
+            MegaDisperse,
             [Chain.gateway, Chain.gasReceiver]
         )
         
         console.log(
-            "MessageReceiver deployed on", Chain.name, ":",
-            Receiver.address,
+            "MegaDisperse deployed on", Chain.name, ":",
+            Disperse.address,
         )
-        Chain.messageReceiver = Receiver.address
-        */
     }
 }
 
-deploy()
+deploy();

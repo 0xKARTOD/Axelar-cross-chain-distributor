@@ -5,8 +5,9 @@
     "main": "index.js",
 
     "scripts": {
+        "start": "npm update && npm install",
         "dev": "next dev",
-        "start:dev": "ts-node scripts/start-local-dev.ts",
+        "start:dev": "ts-node scripts/start-local-dev.ts", 
         "test": "echo \"Error: no test specified\" && exit 1",
         "contracts:build": "hardhat compile",
         "contracts:deploy": "ts-node scripts/deploy.ts"
@@ -16,6 +17,7 @@
     "license": "ISC",
     "dependencies": {
         "@axelar-network/axelar-local-dev":"^1.1.0",
+        "@axelar-network/axelarjs-sdk":"^0.11.4",
         "classnames":"^2.3.2",
         "next":"^12.3.1",
         "ethers":"^5.7.1",
@@ -25,6 +27,9 @@
         "daisyui":"^2.31.0"
     },
     "devDependencies": {
+        "@types/react":"^18.0.21",
+        "@types/react-dom":"^18.0.6",
+        "@types/node":"^18.7.23",
         "hardhat":"^2.11.2",
         "hardhat-gas-reporter":"^1.0.9",
         "solidity-coverage":"^0.8.2",
@@ -35,9 +40,6 @@
         "eslint-config-next":"^12.3.1",
         "mocha":"^10.0.0",
         "solhint":"^3.3.7",
-        "@types/react":"^18.0.21",
-        "@types/react-dom":"^18.0.6",
-        "@types/node":"^18.7.23",
         "tailwindcss":"^3.1.8",
         "autoprefixer":"^10.4.12"
     }
