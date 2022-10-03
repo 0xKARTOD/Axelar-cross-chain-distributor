@@ -1,17 +1,7 @@
-
-import { getDefaultProvider } from "ethers";
-import { wallet } from "../config/constants";
-
-
-const {
-  utils: { deployContract },
-} = require("@axelar-network/axelar-local-dev");
-
-// load contracts
-const MessageSenderContract = require("../artifacts/contracts/MessageSender.sol/MessageSender.json");
-const MessageReceiverContract = require("../artifacts/contracts/MessageReceiver.sol/MessageReceiver.json");
-
-let chains = require("../local.json");
+import '@nomiclabs/hardhat-ethers'
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import hre from "hardhat"
+import chains from "../local.json"
 
 
 //deploy script
@@ -19,37 +9,26 @@ async function deploy() {
     /*
         DEPLOY ON CHAINS LIST
     */
-    
-    for (const Chain of chains) {
-        //const Chain = chains.find((chain: any) => chain.name === chains[i].name)
-        
-        const Provider = getDefaultProvider(Chain.rpc)
-        const ConnectedWallet = wallet.connect(Provider)
+    const chainId = hre.network.config.chainId
+    const chainInfo = chains.find(chain => chain.chainId == chainId)
+    if (!chainInfo) return
+    const [signer] = await hre.ethers.getSigners()
 
-        console.log(Provider)
-        /*
-        const Sender = await deployContract(
-            ConnectedWallet,
-            MessageSenderContract,
-            [Chain.gateway, Chain.gasReceiver]
-        )
-        console.log("MessageSender deployed on ", Chain.name, ":", Sender.address)
+    const MessageSenderFactory = await hre.ethers.getContractFactory("MessageSender")
+    const messageSender = await MessageSenderFactory.deploy(chainInfo.gateway, chainInfo.gasReceiver)
+    console.log("Deployed contract to:", messageSender.address)
+    console.log("Gateway:", chainInfo.gateway)
+    console.log("Gas Receiver:", chainInfo.gasReceiver)
+    console.log("Signed by:", signer.address)
+    console.log("On chain:", chainId)
 
-        Chain.messageSender = Sender.address
-
-        const Receiver = await deployContract(
-            ConnectedWallet,
-            MessageReceiverContract,
-            [Chain.gateway, Chain.gasReceiver]
-        )
-        
-        console.log(
-            "MessageReceiver deployed on", Chain.name, ":",
-            Receiver.address,
-        )
-        Chain.messageReceiver = Receiver.address
-        */
-    }
+    const MessageReceiverFactory = await hre.ethers.getContractFactory("MessageReceiver")
+    const messageReceiver = await MessageReceiverFactory.deploy(chainInfo.gateway, chainInfo.gasReceiver)
+    console.log("Deployed contract to:", messageSender.address)
+    console.log("Gateway:", chainInfo.gateway)
+    console.log("Gas Receiver:", chainInfo.gasReceiver)
+    console.log("Signed by:", signer.address)
+    console.log("On chain:", chainId)
 }
 
 deploy()
