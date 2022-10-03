@@ -54,28 +54,22 @@ module.exports = {
       url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
       chainId: 97,
       gasPrice: 11000000000,
-      accounts: [process.env.MAINNET_MNEMONIC]
+      accounts: [process.env.PRIVATE_KEY]
     },
     bsc_main: {
       url: 'https://bsc-dataseed.binance.org/',
       chainId: 56,
       gasPrice: 5000000000,
-      accounts: {
-        mnemonic: process.env.MAINNET_MNEMONIC || '',
-      },
+      accounts: [process.env.PRIVATE_KEY]
     },
     eth_goerli: {
       url: 'https://rpc.goerli.mudit.blog/',
       chainId: 5,
-      accounts: {
-        mnemonic: process.env.MAINNET_MNEMONIC || '',
-      },
+      accounts: [process.env.PRIVATE_KEY]
     },
     eth_main: {
       url: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
-      accounts: {
-        mnemonic: process.env.MAINNET_MNEMONIC || '',
-      },
+      accounts: [process.env.PRIVATE_KEY]
     },
   },
 }
