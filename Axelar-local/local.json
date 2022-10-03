@@ -1,7 +1,7 @@
 [
   {
     "name": "Ethereum",
-    "chainId": 2500,
+    "chainId": 1,
     "gateway": "0x043f57C16f6322E42F6D1deB46E0F53e6FaA3379",
     "gasReceiver": "0x8Fd1a92a56e49C1b9FAda0015b9Ac51E4a52D181",
     "constAddressDeployer": "0x69aeB7Dc4f2A86873Dae8D753DE89326Cf90a77a",
@@ -14,7 +14,7 @@
   },
   {
     "name": "Polygon",
-    "chainId": 2501,
+    "chainId": 137,
     "gateway": "0x186038359000c32da660ecA49C3d494001A30Ffe",
     "gasReceiver": "0xe90560ba227BA579eb4D883abe73E85a9123a615",
     "constAddressDeployer": "0x69aeB7Dc4f2A86873Dae8D753DE89326Cf90a77a",
@@ -27,7 +27,7 @@
   },
   {
     "name": "Avalanche",
-    "chainId": 2502,
+    "chainId": 43114,
     "gateway": "0x411fB36E488f22bBE872C345e652e45ff0EB319f",
     "gasReceiver": "0xc17a3E5357146d7b9CC3fB025356f25dd450554F",
     "constAddressDeployer": "0x69aeB7Dc4f2A86873Dae8D753DE89326Cf90a77a",
@@ -37,5 +37,11 @@
     "rpc": "http://localhost:8500/2",
     "tokenName": "Avax",
     "tokenSymbol": "AVAX"
+  },
+  {
+    "name": "bsd-test",
+    "chainId": 97,
+    "gateway": "0x4D147dCb984e6affEEC47e44293DA442580A3Ec0",
+    "gasReceiver": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
   }
 ]
