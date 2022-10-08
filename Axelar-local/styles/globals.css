@@ -6,6 +6,28 @@ body {
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: auto ; /* Resize the background image to cover the entire container */
-  background-image: url("../public/assets/axelar.gif");
   background-color: rgb(16, 16, 33);
+}
+
+.con{
+  background-image: url("../public/assets/ethereum.gif");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  background-color: rgb(16, 16, 33);
+}
+
+.col {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+
+
+@media only screen and (max-width: 600px) {
+  .col{
+    float: none;
+    width: 100%;
+  }
 }
