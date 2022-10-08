@@ -73,21 +73,19 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <div>
-        <div className="row-span-1 shadow-xl card w-100 bg-base-100">
-          <div className="card-body">
-            <h1 className="text-4xl font-medium text-center">
+        <div className="con row-span-1 card bg-dark text-white">
+            <h1 className="text-4xl text-white font-medium text-center">
         
               Cross Chain Distributor and DAO voter
             </h1>
-              <h2 className="text-base text-center">Built by Impossible JoJo team</h2>
-          </div>
-          <div className="card-body">
+              <h2 className="text-white text-center">Built by Impossible JoJo team</h2>
+          
+          <div className="card-body mx-auto">
             <h2 className="card-title">
               Total voting power: {totalVPbalances} MVOTE.     
               Select a campaigns ID: 
               <form action="#">
-                <select name="campaigns" id="Idcamp" /*onChange={SelectCampaignID}*/>
+                <select className="text-black" name="campaigns" id="Idcamp" /*onChange={SelectCampaignID}*/>
                   <option value="0">0</option>
                   <option value="1">1</option>
                 </select>
@@ -97,7 +95,8 @@ const Home: NextPage = () => {
           </div>
         </div>
 
-          <div className="gap-20 mt-20 justify-items-center">
+        <div className="col">
+        <div className="gap-20 mt-10 justify-items-center ">
             {/* Voter part */}
             <div className="row-span-2 shadow-xl card w-100 bg-base-100">
               <div className="card-body">
@@ -160,18 +159,18 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-        </div>
+          </div>
+          
 
 
-
-        <div className="gap-20 mt-20 justify-items-center">
+      <div className="col">
+        <div className="gap-20 mt-10 justify-items-center">
             {/* Distributor part */}
             <div className="row-span-2 shadow-xl card w-100 bg-base-100">
               <div className="card-body">
                 <h1 className="text-4xl font-medium text-center">
                   Cross Chain Distributor
                 </h1>
-                WIP
               </div>
               <div className="card-body">
                 <h2 className="card-title">Connected wallet (Distributor):</h2>
@@ -299,6 +298,8 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
+        </div>
+
       </div>
   );
 };
