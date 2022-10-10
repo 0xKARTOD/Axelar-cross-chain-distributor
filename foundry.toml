@@ -1,9 +1,9 @@
 [default]
-src = 'src'
+src = 'contracts'
 out = 'out'
 libs = ['lib']
 remappings = [
-    '@openzeppelin/=lib/openzeppelin-contracts/contracts',
+    '@openzeppelin/=lib/openzeppelin-contracts/',
     '@axelar-network/=Axelar-local/node_modules/@axelar-network/',
 ]
 

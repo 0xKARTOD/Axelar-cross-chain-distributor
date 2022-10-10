@@ -1,6 +1,6 @@
 pragma solidity ^0.8.9;
 
-import '@openzeppelin/token/ERC20/presets/ERC20PresetMinterPauser.sol';
+import '@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol';
 import { AxelarExecutable } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/executables/AxelarExecutable.sol';
 import { IAxelarGasService } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGasService.sol';
 

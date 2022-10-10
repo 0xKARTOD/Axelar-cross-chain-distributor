@@ -1,6 +1,6 @@
 pragma solidity ^0.8.9;
 
-import '@openzeppelin/access/Ownable.sol';
+import '@openzeppelin/contracts/access/Ownable.sol';
 import { AxelarExecutable } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/executables/AxelarExecutable.sol';
 
 contract MegaVoteMaster is AxelarExecutable, Ownable {
