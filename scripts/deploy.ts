@@ -6,10 +6,11 @@ import AxelarAddresses from "./AxelarAddresses.json"
 async function deploy() {
     const networkName = hre.network.name;
     console.log("Deploying on chain:", networkName)
+    console.log("Params:", AxelarAddresses[networkName])
     const Erc20Factory = await hre.ethers.getContractFactory("ERC20MegaVote")
     const erc20Contract = await Erc20Factory.deploy(
         "MVote",
-        "MOVTE",
+        "MVOTE",
         AxelarAddresses[networkName].gateway,
         AxelarAddresses[networkName].gasService,
     )

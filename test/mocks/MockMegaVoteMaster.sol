@@ -1,6 +1,6 @@
 pragma solidity ^0.8.9;
 
-import "../../src/MegaVoteMaster.sol";
+import "../../contracts/MegaVoteMaster.sol";
 
 contract MockMegaVoteMaster is MegaVoteMaster {
 

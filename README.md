@@ -1,16 +1,16 @@
 # Axelar-cross-chain-distributor
 
-## Deploy 🚀
 
-```
-hardhat run scripts/deploy.ts --network <NETWORK>
-```
+## Deployed contracts 🥳
 
-## Run Tests 🤖
+Binance Testnet:
+- MegaVoteMaster: 
+- ERC20MegaVote: 
 
-```basg
-foundry test --fork-url <CHAIN_RPC_URL>
-```
+Avax Testnet:
+- MegaVoteMaster: 
+- ERC20MegaVote: 
+
 ## Usage
 
 ### Setup ⛏️
@@ -51,5 +51,14 @@ Params:
 To cast `amount` of votes, the contract will lock the same amount of `ERC20MegaVote` tokens.  
 Uncasting `amount` of votes will have the tokens be refunded.
 
+## Deploy Your Own Voting Contracts🚀
 
+```
+hardhat run scripts/deploy.ts --network <NETWORK>
+```
 
+## Run Tests 🤖
+
+```basg
+foundry test --fork-url <CHAIN_RPC_URL>
+```

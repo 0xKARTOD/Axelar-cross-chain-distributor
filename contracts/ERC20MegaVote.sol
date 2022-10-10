@@ -1,12 +1,8 @@
 pragma solidity ^0.8.9;
 
-import '@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol';
-import { AxelarExecutable } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/executables/AxelarExecutable.sol';
-import { IAxelarGasService } from '@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGasService.sol';
+import "./ERC20CrossChain.sol";
 
-contract ERC20MegaVote is ERC20PresetMinterPauser, AxelarExecutable {
-    IAxelarGasService public immutable gasReceiver;
-
+contract ERC20MegaVote is ERC20CrossChain{
     /// @dev Encode in payload to flag as a VOTE action
     /// @dev Encode in payload to flag as an UNVOTE action
     bool ACTION_VOTE = true;
@@ -16,6 +12,10 @@ contract ERC20MegaVote is ERC20PresetMinterPauser, AxelarExecutable {
     /// @dev address => votes of the user in each campaign
     mapping(address => mapping(uint256 => uint256)) public userVotes;
 
+    /// @dev Total amount of vote of a project
+    /// @dev campaign id => total amount of votes
+    mapping(uint256 => uint256) public totalVotes;
+
     event VoteCasted(address voter, uint256 campaignId, uint256 amount);
     event VoteUncasted(address voter, uint256 campaignId, uint256 amount);
 
@@ -24,10 +24,9 @@ contract ERC20MegaVote is ERC20PresetMinterPauser, AxelarExecutable {
         string memory symbol_,
         address gateway_,
         address gasReceiver_
-    ) ERC20PresetMinterPauser(name_, symbol_) AxelarExecutable(gateway_){
+    ) ERC20CrossChain(name_, symbol_, gateway_, gasReceiver_){
         gasReceiver = IAxelarGasService(gasReceiver_);
     }
-
 
     /**
       @notice Vote to a campaign
@@ -43,10 +42,12 @@ contract ERC20MegaVote is ERC20PresetMinterPauser, AxelarExecutable {
         string memory masterAddress
     ) public {
         address voter = _msgSender();
-        require(transferFrom(voter, address(this), amount), "Transfer failed");
-
+        totalVotes[campaignId] += amount;
         userVotes[voter][campaignId] += amount;
+        burn(amount);
+
         bytes memory payload = abi.encode(campaignId, amount, ACTION_VOTE);
+        sendGas(destinationChain, payload);
         gateway.callContract(destinationChain, masterAddress, payload);
         emit VoteCasted(voter, campaignId, amount);
     }
@@ -66,10 +67,13 @@ contract ERC20MegaVote is ERC20PresetMinterPauser, AxelarExecutable {
     ) public {
         address voter = _msgSender();
         require(userVotes[voter][campaignId] >= amount, "Exceed withdrawal limit");
-        require(transferFrom(address(this), voter, amount), "Transfer failed");
-
+        // require(transferFrom(address(this), voter, amount), "Transfer failed");
+        totalVotes[campaignId] -= amount;
         userVotes[voter][campaignId] -= amount;
+        mint(voter, amount);
+
         bytes memory payload = abi.encode(campaignId, amount, ACTION_UNVOTE);
+        sendGas(destinationChain, payload);
         gateway.callContract(destinationChain, masterAddress, payload);
         emit VoteUncasted(voter, campaignId, amount);
     }

@@ -1,6 +1,6 @@
 pragma solidity ^0.8.9;
 
-import '../../src/ERC20MegaVote.sol';
+import '../../contracts/ERC20MegaVote.sol';
 
 contract MockERC20MegaVote is ERC20MegaVote {
 
@@ -15,8 +15,8 @@ contract MockERC20MegaVote is ERC20MegaVote {
     function genVotePayload(
         uint256 amount,
         uint256 campaignId,
-        string memory destinationChain,
-        string memory masterAddress
+        string memory, // destinationChain
+        string memory // masterAddress
     ) public view returns (bytes memory payload) {
         payload = abi.encode(campaignId, amount, ACTION_VOTE);
         return payload;
@@ -25,8 +25,8 @@ contract MockERC20MegaVote is ERC20MegaVote {
     function genUnvotePayload(
         uint256 amount,
         uint256 campaignId,
-        string memory destinationChain,
-        string memory masterAddress
+        string memory, // destinationChain,
+        string memory // masterAddress
     ) public view returns (bytes memory payload) {
         payload = abi.encode(campaignId, amount, ACTION_UNVOTE);
         return payload;

@@ -1,10 +1,10 @@
 {
     "bsc_test": {
-        "gateway": "0x304acf330bbE08d1e512eefaa92F6a57871fD895",
-        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712"
+        "gateway": "0x4D147dCb984e6affEEC47e44293DA442580A3Ec0",
+        "gasService": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
     },
     "avax_test": {
-        "gateway": "0x5029C0EFf6C34351a0CEc334542cDb22c7928f78",
-        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712"
+        "gateway": "0xC249632c2D40b9001FE907806902f63038B737Ab",
+        "gasService": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6"
     }
 }
