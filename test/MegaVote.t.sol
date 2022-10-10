@@ -10,6 +10,9 @@ import { AddressToString } from '../lib/axelar-utils/StringAddressUtils.sol';
 contract ContractTest is Test {
     using AddressToString for address;
 
+    string internal constant SOURCE_CHAIN = "Binance";
+    string internal constant DESTINATION_CHAIN = "Avax";
+
     MockMegaVoteMaster internal mockMegaVoteMaster;
     MockERC20MegaVote internal mockERC20MegaVote;
     address internal voter = 0x1f1BDFE288a8C9ac31F1f7C70dfEE6c82EDF77f6;
@@ -19,16 +22,23 @@ contract ContractTest is Test {
     constructor() {
         mockMegaVoteMaster = new MockMegaVoteMaster(gatewayAddr);
         mockERC20MegaVote = new MockERC20MegaVote("VOTE", "VOTE", gatewayAddr, gasServiceAddr);
+        mockMegaVoteMaster.createCampaign("Test Campaign");
+        mockMegaVoteMaster.addVoteToken(SOURCE_CHAIN, address(mockERC20MegaVote).toString());
     }
     function setUp() public {
     }
 
-    function testVote() public {
+    function testExecute() public {
+        uint256 votes = 10000;
         mockERC20MegaVote.mint(address(this), 1000000000000000000);
         console.log(mockERC20MegaVote.balanceOf(address(this)));
-        bytes memory payload = mockERC20MegaVote.genVote(10000, 0, "97", address(mockMegaVoteMaster).toString());
-        mockMegaVoteMaster.execute("", "", payload);
-        console.log("total votes", mockMegaVoteMaster.getVotes(0));
+        bytes memory payload = mockERC20MegaVote.genVotePayload(votes, 0, DESTINATION_CHAIN, address(mockMegaVoteMaster).toString());
+        mockMegaVoteMaster.execute(SOURCE_CHAIN, address(mockERC20MegaVote).toString(), payload);
+        assertEq(mockMegaVoteMaster.getVotes(0), votes);
+
+        payload = mockERC20MegaVote.genUnvotePayload(votes, 0, DESTINATION_CHAIN, address(mockMegaVoteMaster).toString());
+        mockMegaVoteMaster.execute(SOURCE_CHAIN, address(mockERC20MegaVote).toString(), payload);
+        assertEq(mockMegaVoteMaster.getVotes(0), 0);
     }
 
 }

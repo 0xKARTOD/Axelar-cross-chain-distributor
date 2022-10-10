@@ -12,7 +12,12 @@ contract MockMegaVoteMaster is MegaVoteMaster {
         string calldata sourceAddress_,
         bytes calldata payload_
     ) public {
-        (uint256 campaignId, uint256 amount) = abi.decode(payload_, (uint256, uint256));
-        campaigns[campaignId].totalVotes += amount;
+        require(voteTokens[abi.encode(sourceChain_, sourceAddress_)], "Source contract must be whitelisted");
+        (uint256 campaignId, uint256 amount, bool isVote) = abi.decode(payload_, (uint256, uint256, bool));
+        if (isVote) {
+            campaigns[campaignId].totalVotes += amount;
+        } else {
+            campaigns[campaignId].totalVotes -= amount;
+        }
     }
 }
