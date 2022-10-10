@@ -6,10 +6,10 @@
 hardhat run scripts/deploy.ts --network <NETWORK>
 ```
 
-## Run Tests
+## Run Tests 🤖
 
 ```basg
-foundry test --fork-url https://data-seed-prebsc-1-s1.binance.org:8545/
+foundry test --fork-url <CHAIN_RPC_URL>
 ```
 ## Usage
 
@@ -37,6 +37,16 @@ unvote(
     string memory destinationChain, string memory masterAddress
 ) 
 ```
+
+Params:
+
+- `amount`: The amount of vote to cast or uncast, and tokens to be locked or unlocked
+
+- `campaignId`: ID of the campaign to interact with
+
+- `destinationChain`: Chain name of `MegaVoteMaster`. Refer to https://docs.axelar.dev/dev/build/chain-names/testnet
+
+- `masterAddress`: Contract address of `MegaVoteMaster`
 
 To cast `amount` of votes, the contract will lock the same amount of `ERC20MegaVote` tokens.  
 Uncasting `amount` of votes will have the tokens be refunded.

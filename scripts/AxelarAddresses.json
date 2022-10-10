@@ -1,11 +1,10 @@
 {
     "bsc_test": {
         "gateway": "0x304acf330bbE08d1e512eefaa92F6a57871fD895",
-        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712",
-
+        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712"
     },
     "avax_test": {
         "gateway": "0x5029C0EFf6C34351a0CEc334542cDb22c7928f78",
-        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712",
+        "gasService": "0x2d5d7d31F671F86C782533cc367F14109a082712"
     }
 }
