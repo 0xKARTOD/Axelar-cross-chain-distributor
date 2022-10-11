@@ -40,7 +40,7 @@ contract ERC20MegaVote is ERC20CrossChain{
         uint256 campaignId,
         string memory destinationChain,
         string memory masterAddress
-    ) public {
+    ) public payable {
         address voter = _msgSender();
         totalVotes[campaignId] += amount;
         userVotes[voter][campaignId] += amount;
@@ -64,7 +64,7 @@ contract ERC20MegaVote is ERC20CrossChain{
         uint256 campaignId,
         string memory destinationChain,
         string memory masterAddress
-    ) public {
+    ) public payable {
         address voter = _msgSender();
         require(userVotes[voter][campaignId] >= amount, "Exceed withdrawal limit");
         // require(transferFrom(address(this), voter, amount), "Transfer failed");

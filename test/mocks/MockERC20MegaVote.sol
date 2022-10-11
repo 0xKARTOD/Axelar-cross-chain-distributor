@@ -31,4 +31,21 @@ contract MockERC20MegaVote is ERC20MegaVote {
         payload = abi.encode(campaignId, amount, ACTION_UNVOTE);
         return payload;
     }
+
+    function genTransferRemotePayload(
+        address[] calldata recipients,
+        uint256[] calldata amounts
+    ) public view returns (bytes memory payload) {
+        payload = abi.encode(recipients, amounts);
+        return payload;
+    }
+
+    function execute(
+        bytes calldata payload
+    ) public {
+        (address[] memory recipients, uint256[] memory amounts) = abi.decode(payload, (address[], uint256[]));
+        for (uint8 i = 0; i < amounts.length; i++) {
+            _mint(recipients[i], amounts[i]);
+        }
+    }
 }

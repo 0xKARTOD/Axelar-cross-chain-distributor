@@ -69,13 +69,9 @@ contract ERC20CrossChain is AxelarExecutable, ERC20PresetMinterPauser {
 
     function _execute(
         string calldata, /*sourceChain*/
-        string calldata sourceAddress,
+        string calldata, /*sourceAddress*/
         bytes calldata payload
     ) internal override {
-        if (sourceAddress.toAddress() != address(this)) {
-            emit FalseSender(sourceAddress, sourceAddress);
-            return;
-        }
         (address[] memory recipients, uint256[] memory amounts) = abi.decode(payload, (address[], uint256[]));
         for (uint8 i = 0; i < amounts.length; i++) {
             _mint(recipients[i], amounts[i]);

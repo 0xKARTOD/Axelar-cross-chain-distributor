@@ -15,6 +15,7 @@ contract ContractTest is Test {
     MockMegaVoteMaster internal mockMegaVoteMaster;
     MockERC20MegaVote internal mockERC20MegaVote;
     address internal voter = 0x1f1BDFE288a8C9ac31F1f7C70dfEE6c82EDF77f6;
+    address internal voter2 = 0xaa25Aa7a19f9c426E07dee59b12f944f4d9f1DD3;
     address internal gatewayAddr = 0x4D147dCb984e6affEEC47e44293DA442580A3Ec0;
     address internal gasServiceAddr = 0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6;
 
@@ -54,12 +55,15 @@ contract ContractTest is Test {
 
     function testTransfer() public {
         uint256 sendAmount = 10000;
-        address[] memory addresses = new address[](10);
+        address[] memory addresses = new address[](1);
         addresses[0] = address(this);
-        uint256[] memory amounts = new uint256[](10);
+        uint256[] memory amounts = new uint256[](1);
         amounts[0] = sendAmount;
         mockERC20MegaVote.transferRemote(DESTINATION_CHAIN, address(0).toString(), addresses, amounts);
         assertEq(mockERC20MegaVote.balanceOf(address(this)), MINT_AMOUNT - sendAmount);
+        bytes memory payload = mockERC20MegaVote.genTransferRemotePayload(addresses, amounts);
+        mockERC20MegaVote.execute(payload);
+        assertEq(mockERC20MegaVote.balanceOf(address(this)), MINT_AMOUNT);
     }
 
 }
