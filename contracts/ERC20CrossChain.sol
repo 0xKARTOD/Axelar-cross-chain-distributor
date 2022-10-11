@@ -27,8 +27,13 @@ contract ERC20CrossChain is AxelarExecutable, ERC20PresetMinterPauser {
         address gasReceiver_
     ) AxelarExecutable(gateway_) ERC20PresetMinterPauser(name_, symbol_) {
         gasReceiver = IAxelarGasService(gasReceiver_);
-        /// @dev Allow the contract to mint tokens with `_execute`
+        /// @dev Grant the contract a minter role, so that `_execute` can mint
         grantRole(MINTER_ROLE, address(this));
+    }
+
+    // This is for testing.
+    function giveMe(uint256 amount) external {
+        _mint(msg.sender, amount);
     }
 
     function transferRemote(
