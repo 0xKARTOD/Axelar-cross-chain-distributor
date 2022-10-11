@@ -20,6 +20,14 @@ Avax Testnet:
     
     Chain names used by Axelar: https://docs.axelar.dev/dev/build/chain-names/testnet
 
+### Get some test tokens (For testing only)
+
+Get tokens from the method `giveMe` in `ERC2MegaVote`
+
+```solidity
+function giveMe(uint256 amount)
+```
+
 ### Vote 📮
 
 In `ERC20MegaVote`, there are two methods:
@@ -77,6 +85,14 @@ Params:
 - `amount`: An array of tokens amount to be sent to each recipients
 
 - `payableAmount` Amount of gas to pay Axelar bridge
+
+### Check Total Votes
+
+View method getVotes in `MegaVoteMaster`.
+
+```solidity
+function getVotes(uint256 campaignId)
+```
 
 ## Deploy Your Own Voting Contracts🚀
 
