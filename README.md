@@ -20,19 +20,27 @@ Avax Testnet:
     
     Chain names used by Axelar: https://docs.axelar.dev/dev/build/chain-names/testnet
 
+### Get some test tokens (For testing only)
+
+Get tokens from the method `giveMe` in `ERC2MegaVote`
+
+```solidity
+function giveMe(uint256 amount)
+```
+
 ### Vote 📮
 
 In `ERC20MegaVote`, there are two methods:
 
 ```solidity
-vote(
+function vote(
     uint256 amount, uint256 campaignId,
     string memory destinationChain, string memory masterAddress
 ) 
 ```
 
 ```solidity
-unvote(
+function unvote(
     uint256 amount, uint256 campaignId,
     string memory destinationChain, string memory masterAddress
 ) 
@@ -50,6 +58,41 @@ Params:
 
 To cast `amount` of votes, the contract will lock the same amount of `ERC20MegaVote` tokens.  
 Uncasting `amount` of votes will have the tokens be refunded.
+
+### Batch Send Tokens Cross-chain
+
+`ERC20MegaVote` inherits from `ERC20CrossChain`
+
+The method `transferRemote` can send tokens cross-chain
+
+```solidity
+function transferRemote(
+    string calldata destinationChain,
+    string calldata destinationAddress,
+    address[] calldata recipients,
+    uint256[] calldata amounts
+) public payable {
+```
+
+Params:
+
+- `destinationChain`: Chain name of `MegaVoteMaster`
+
+- `destinationAddress`: Address of `MegaVoteMaster`
+
+- `recipients`:  An array of recipients addresses
+
+- `amount`: An array of tokens amount to be sent to each recipients
+
+- `payableAmount` Amount of gas to pay Axelar bridge
+
+### Check Total Votes
+
+View method getVotes in `MegaVoteMaster`.
+
+```solidity
+function getVotes(uint256 campaignId)
+```
 
 ## Deploy Your Own Voting Contracts🚀
 
