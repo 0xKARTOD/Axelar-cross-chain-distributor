@@ -4,12 +4,12 @@
 ## Deployed contracts 🥳
 
 Binance Testnet:
-- MegaVoteMaster: 
-- ERC20MegaVote: 
+- MegaVoteMaster: 0x577ba39Ad22d49e74c04667A5Cf02030B4402572
+- ERC20MegaVote: 0x8317E660AD7e621Ffc31c1652E8d288f540456F5
 
 Avax Testnet:
-- MegaVoteMaster: 
-- ERC20MegaVote: 
+- MegaVoteMaster: 0x17CA47790e2ec7139fE8F728eE73dc9E35e49CC2
+- ERC20MegaVote: 0x4e2ebcee1512888d7ceddb40859462615de5770a
 
 ## Usage
 

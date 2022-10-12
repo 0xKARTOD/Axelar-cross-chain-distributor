@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: auto ; /* Resize the background image to cover the entire container */
+  background-color: rgb(15, 11, 28);
+}
+
+.con{
+  background-image: url("../public/assets/ethereum.gif");
+  background-position: top; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+  background-color: rgb(15, 11, 28);
+}
+
+.center-text{
+  text-align: center;
+}
+
+.center-text-black-border{
+  text-align: center;
+  color: white;
+  text-shadow: rgb(230, 0, 255) 0 0 3px;
+}
+
+.select_list{
+  background-color: rgb(255, 255, 255);
+  color: #212529;
+  border: 1px solid #bdbdbd;
+}
+
+.col {
+  float: left;
+  padding: 10px;
+  width: 50%;
+  
+}
+
+.text-field__input {
+  color: #212529;
+  display: block;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #bdbdbd;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  padding: 0.375rem 0.75rem;
+}
+
+/* Clear floats after the columns */
+
+
+@media only screen and (max-width: 600px) {
+  .col{
+    float: none;
+    width: 100%;
+  }
+}

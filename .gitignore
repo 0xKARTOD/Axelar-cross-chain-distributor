@@ -1,9 +1,0 @@
-cache/
-out/
-
-.DS_Store
-
-.yarn
-node_modules
-
-artifacts

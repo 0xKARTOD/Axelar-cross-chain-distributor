@@ -30,6 +30,11 @@ contract MegaVoteMaster is AxelarExecutable, Ownable {
         voteTokens[abi.encode(sourceChain, sourceChainAddress)] = false;
     }
 
+    /// @dev Check if an address is whitelisted
+    function isVoteToken(string memory sourceChain, string memory sourceChainAddress) public view returns (bool) {
+        return voteTokens[abi.encode(sourceChain, sourceChainAddress)];
+    }
+
     /**
       @notice Create a new campaign with the id equals to nextId
       @param name The name of the campaign
