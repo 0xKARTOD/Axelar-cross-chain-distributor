@@ -81,13 +81,18 @@ import EVMClient from "@axelar-network/axelarjs-sdk/dist/src/libs/TransactionRec
 
 
   async function main() {
-    var EvmChainSource = avalancheChain.AxelarName as EvmChain
+    const api = new AxelarQueryAPI({ environment: Environment.TESTNET });
 
-    //console.log(EvmChain.AVALANCHE)
-    //console.log(EvmChainSource)
+    // Calculate how much gas to pay to Axelar to execute the transaction at the destination chain
+    const gasFee = await api.estimateGasFee(
+      EvmChain.AVALANCHE,
+      EvmChain.BINANCE,
+      GasToken.AVAX,
+      1000000,
+      2
+    );
 
-    console.log(typeof(EvmChain.AVALANCHE))
-    console.log(typeof(EvmChainSource))
+    console.log(gasFee)
   }
 
   main()

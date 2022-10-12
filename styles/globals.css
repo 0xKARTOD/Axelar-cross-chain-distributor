@@ -10,7 +10,7 @@ body {
 }
 
 .con{
-  background-image: url("../public/assets/ethereum.gif");
+  /*background-image: url("../public/assets/ethereum.gif");*/
   background-position: top; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain;
@@ -21,10 +21,23 @@ body {
   text-align: center;
 }
 
+.center-text-picture{
+  background-image: url("../public/assets/ethereum.gif");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain;
+  background-color: rgb(15, 11, 28);
+  height: 320px;
+  width: 320px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+}
+
 .center-text-black-border{
   text-align: center;
+  font: 17px Arial;
   color: white;
-  text-shadow: rgb(230, 0, 255) 0 0 3px;
 }
 
 .select_list{

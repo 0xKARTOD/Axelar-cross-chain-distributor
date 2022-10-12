@@ -10,7 +10,9 @@ import {
   Environment,
   EvmChain,
   AddGasOptions,
-  AxelarGMPRecoveryAPI
+  AxelarGMPRecoveryAPI,
+  AxelarQueryAPI,
+  GasToken
 } from "@axelar-network/axelarjs-sdk";
 
 import AxelarGatewayContract from "../artifacts/@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol/IAxelarGateway.json";
@@ -116,12 +118,16 @@ export async function sendTokenToVote(
 
     
   const api = new AxelarGMPRecoveryAPI({ environment: Environment.TESTNET });
-  
-  if (Destchain === 'binance') {
-    var gasamount = "200000000000000000"
-  } else {
-    var gasamount = "100000000000000000"
-  }
+  const sdk = new AxelarQueryAPI({ environment: Environment.TESTNET });
+
+    // Calculate how much gas to pay to Axelar to execute the transaction at the destination chain
+  const gasamount = await sdk.estimateGasFee(
+    EvmChain.AVALANCHE,
+    Destchain as EvmChain,
+    GasToken.AVAX,
+    1000000,
+    2
+  );
   // Optional gas
   const options: AddGasOptions = {
     amount: gasamount, // Amount of gas to be added. If not specified, the sdk will calculate the amount automatically.
@@ -196,6 +202,10 @@ export async function sendTokenToDistribute(
       }
     }
 
+    const EvmChainDest = TempChain.AxelarName as EvmChain
+
+    const api = new AxelarQueryAPI({ environment: Environment.TESTNET });
+
     const receipt = await sourceContract
       .transferRemote(
         Chain,
@@ -204,28 +214,29 @@ export async function sendTokenToDistribute(
         TempAmount
       )
       .then((tx: any) => tx.wait());
-
-    const api = new AxelarGMPRecoveryAPI({ environment: Environment.TESTNET });
+    
+    const sdk = new AxelarGMPRecoveryAPI({ environment: Environment.TESTNET });
         
-    if (Chain === 'binance') {
-      var gasamount = "200000000000000000"
-    } else {
-      var gasamount = "100000000000000000"
-    }
+    const gasamount = await api.estimateGasFee(
+      EvmChainSource,
+      EvmChainDest,
+      GasToken.AVAX,
+      1000000,
+      2
+    );
 
-      // Optional gas
     const options: AddGasOptions = {
       amount: gasamount, // Amount of gas to be added. If not specified, the sdk will calculate the amount automatically.
       evmWalletDetails: { useWindowEthereum: false, privateKey: wallet.privateKey }
     };
-    
-    const gasFees = await api
-      .addNativeGas(
+
+    const gasFees = await sdk
+    .addNativeGas(
         EvmChainSource,
         receipt.transactionHash,
         options
-      );
-
+    );
+    
     console.log({
       txHash: receipt.transactionHash
     });

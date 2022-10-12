@@ -104,22 +104,23 @@ const Home: NextPage = () => {
   return (
     <div>
       <div className="con row-span-1 card text-white">
-        <h1 className="text-4xl text-white font-medium text-center">
-          Cross Chain Distributor and DAO voter
+        <h1 className="text-4xl text-white font-bold text-center">
+          Cross Chain<br></br> 
+          Distributor & DAO voter
         </h1>
         <h2 className="text-white text-center">Built by Impossible JoJo team</h2>
           
-
         <div className="card-body mx-auto">
-          <h2 className="card-title">
-            <div className="center-text-black-border">
-              To get the total voting power for a particular campaign,<br></br>
-              select chain from the list below and aslo write the campaign ID.<br></br>
-              The press "SELECT" and wait for.<br></br>
-              <br></br>
-              Total voting power: {totalVPbalances} MVOTE.
-              Select a campaign ID: 
-            </div>
+          <div className="center-text-black-border">
+            To get the total voting power for a particular campaign,<br></br>
+            select chain from the list below and aslo write the campaign ID.<br></br>
+             And press "SELECT".<br></br>
+          </div>
+          <figure
+            className="center-text-picture"
+          />
+          <h2 className="card-title mx-auto">
+            Select a campaign ID: 
           </h2>
           <div className="form-control">
             <form
@@ -156,6 +157,9 @@ const Home: NextPage = () => {
               </div>
             </form>
           </div>
+          <h2 className="card-title mx-auto">
+            Total voting power: {totalVPbalances} MVOTE.
+          </h2>
         </div>
       </div>
 
@@ -170,9 +174,13 @@ const Home: NextPage = () => {
             </div>
             <div className="card-body">
               <p className="center-text">
-                In this part you can vote for a certain proposal. If, for example, voting takes place on BSC and 
-                you hold your tokens on Avalanche and don't want to transfer tokens to another chain via bridges
-                - just select chain where voting takes place, campaign ID, token amount and click "VOTE"
+                In this part you can vote for a certain proposal.
+              </p>
+              <p>
+                Steps for voting:<br></br>
+                - Input the specific campaign ID and amount at the input line<br></br>
+                - Select Chain<br></br>
+                - Press "VOTE"<br></br>
               </p>
               <h2 className="card-title">Connected wallet (Voter):</h2>
 
@@ -254,9 +262,13 @@ const Home: NextPage = () => {
             </div>
             <div className="card-body">
               <p className="center-text">
-                Before you start voting, you need to distribute tokens to users. In this case you need to specify
-                the addresses, chains and amounts - to make this, use the input line and press "ADD" each time
-                you enter. When you finish typing the list of tokens recipients, just click on "DISTRIBUTE TOKENS"
+                Before you start voting, you need to distribute tokens to users.
+              </p>
+              <p>
+                In this case you need to: <br></br>
+                - Input the specific address, chains and amounts below <br></br>
+                - After each entry, press "ADD" <br></br>
+                - And click on "DISTRIBUTE TOKENS" <br></br>
               </p>
               <h2 className="card-title">Connected wallet (Distributor):</h2>
 
@@ -370,6 +382,11 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+
+      <p>
+        -
+      </p>
+      
     </div>
   );
 };

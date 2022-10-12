@@ -1,0 +1,17 @@
+cache/
+out/
+
+.DS_Store
+
+.yarn
+node_modules
+
+artifacts
+
+package-lock.json
+
+.next
+next-env.d.ts
+.env
+
+uitils/test.ts
