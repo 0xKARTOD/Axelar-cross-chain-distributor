@@ -102,6 +102,24 @@ hardhat run scripts/deploy.ts --network <NETWORK>
 
 ## Run Tests 🤖
 
+Clone this repo:
 ```basg
-foundry test --fork-url <CHAIN_RPC_URL>
+git clone https://github.com/0xKARTOD/Axelar-cross-chain-distributor.git
+```
+
+You can change any settings such as private key or seed phrase on .env file
+
+Install dependencies:
+```basg
+npm run start
+```
+
+Compile contracts with hardhat:
+```basg
+npm run contracts:build
+```
+
+Start the UI:
+```basg
+npm run dev
 ```
