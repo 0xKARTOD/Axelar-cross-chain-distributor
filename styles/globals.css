@@ -19,6 +19,39 @@ body {
 
 .center-text{
   text-align: center;
+  font-weight: bold;
+  font: 20px Arial;
+}
+
+.center-text-vp{
+  text-align: center;
+  color: transparent;
+  font: 30px Arial;
+  font-weight: bold;
+  background-clip: text;
+  background-image: linear-gradient(60deg, #aea4e3, aqua);
+}
+
+.jojotext{
+  color: blueviolet;
+}
+
+.main-text{
+  font-weight: bold;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(60deg, #aea4e3, aqua);
+}
+
+.main-text-cross-chain{
+  font-weight: bold;
+  color: blueviolet;
+}
+
+.center-text-mini{
+  text-align: center;
+  color:#bdbdbd;
+  font: 12px Arial;
 }
 
 .center-text-picture{
@@ -61,6 +94,55 @@ body {
   border: 1px solid #bdbdbd;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   padding: 0.375rem 0.75rem;
+}
+
+.olli{
+  list-style-type: none;
+  counter-reset: num;
+  margin: 0 0 0 45px;
+  padding: 15px 0 5px 0;
+  font-size: 16px;
+}
+
+.olli li {
+  position: relative;
+  margin: 0 0 0 0;
+  padding: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.olli li::before {
+  content: counter(num);
+  counter-increment: num;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: -38px;
+  width: 28px;
+  height: 28px;
+  background: #aea4e3;
+  color: white;
+  text-align: center;
+  line-height: 28px;
+  font-size: 18px;
+}
+
+.gradient-button{
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 20px 30px 32px;
+  margin: 5px 10px;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: 0.5s;
+}
+.gradient-button:hover{
+  background-position: right center;
 }
 
 /* Clear floats after the columns */
