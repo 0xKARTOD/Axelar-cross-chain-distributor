@@ -6,7 +6,6 @@ out/
 .yarn
 node_modules
 
-artifacts
 
 package-lock.json
 
