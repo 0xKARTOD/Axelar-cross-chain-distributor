@@ -131,7 +131,7 @@ const Home: NextPage = () => {
                     disabled={loading}
                     required
                     name="CampID"
-                    type="number"
+                    type="text"
                     placeholder="Enter Campaign ID"
                     className="text-field__input"
                   />
@@ -194,28 +194,6 @@ const Home: NextPage = () => {
                 <h2 className="card-title">Recepients:</h2>
               </label>
 
-              <div className="h-20">
-                <div className="w-full max-w-xs form-control">
-                  <div>
-                    {recipientAddresses.map((recipientAddress, i) => (
-                      <div
-                        key={recipientAddress}
-                        className="flex justify-between"
-                      >
-                        <span>{truncatedAddress(recipientAddress)}</span>
-                        <span className="font-bold">
-                          {". "}
-                          {"Chain ID : "}
-                          {recipientChain[i]}
-                          {"; "}
-                          {" Amount : "}
-                          {recipientAmounts[i] || `0.00`}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
               <div className="justify-end mt-2 card-actions">
                 <form
                   className="flex flex-col w-full"
@@ -223,14 +201,14 @@ const Home: NextPage = () => {
                   >
                   <div>
                     <label className="label">
-                      <span className="label-text">Recepient Information</span>
+                      <span className="label-text">Add recepient:</span>
                     </label>
                     <div className="w-full input-group">
                       <input
                         disabled={loading}
                         required
                         name="Sendamount"
-                        type="number"
+                        type="text"
                         placeholder="Enter amount"
                         className="w-full input input-bordered"
                       />
@@ -290,6 +268,26 @@ const Home: NextPage = () => {
                   </form>
                 </div>
               </div>
+              <div className="auto-recepients">
+                <div className="w-full max-w-xs form-control">
+                  <div>
+                    {recipientAddresses.map((recipientAddress, i) => (
+                      <div
+                        key={recipientAddress}
+                        className="flex justify-between"
+                      >
+                        <span>{truncatedAddress(recipientAddress)}</span>
+                        <span className="font-bold">
+                          {"Chain: "}
+                          {recipientChain[i]}
+                          {". Amount: "}
+                          {recipientAmounts[i] || `0.00`}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -338,7 +336,7 @@ const Home: NextPage = () => {
                           disabled={loading}
                           required
                           name="Voteamount"
-                          type="number"
+                          type="text"
                           placeholder="Enter amount"
                           className="w-full input input-bordered"
                         />
@@ -346,7 +344,7 @@ const Home: NextPage = () => {
                           disabled={loading}
                           required
                           name="VoteID"
-                          type="number"
+                          type="text"
                           placeholder="Enter Campaign"
                           className="w-full input input-bordered"
                         />

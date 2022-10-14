@@ -145,6 +145,11 @@ body {
   background-position: right center;
 }
 
+.auto-recepients{
+  text-align: center;
+  box-sizing: content-box;
+}
+
 /* Clear floats after the columns */
 
 

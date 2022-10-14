@@ -15,7 +15,6 @@ import {
   GasToken
 } from "@axelar-network/axelarjs-sdk";
 
-import AxelarGatewayContract from "../artifacts/@axelar-network/axelar-gmp-sdk-solidity/contracts/interfaces/IAxelarGateway.sol/IAxelarGateway.json";
 import ERC20MegaVote from "../artifacts/contracts/ERC20MegaVote.sol/ERC20MegaVote.json";
 import MegaVoteMaster from "../artifacts/contracts/MegaVoteMaster.sol/MegaVoteMaster.json";
 import IERC20 from "../artifacts/contracts/lib/interfaces/IERC20.sol/IERC20.json";
